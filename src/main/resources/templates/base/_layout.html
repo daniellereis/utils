@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html th:fragment="layout (title, content, links, scripts)" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="pt-PT">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title th:replace="${title}">Agenda</title>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&amp;family=Ubuntu:wght@400;500;700&amp;display=swap">
+    
+  <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap/bootstrap.min.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/nifty/nifty.min.css}">
+  
+  <style>
+    @media print {
+    	.noprint {
+                  visibility: hidden;
+               }
+    }
+  </style>
+  
+<th:block th:replace="${links}" />
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example" _mstaria-label="1156753">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Meus Utilitários</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03"
+        aria-expanded="false" aria-label="Toggle navigation" _mstaria-label="320099">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample03">
+        <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{/home/index}">Início</a></li>
+          <li class="nav-item"><a class="nav-link" th:href="@{/contato/index}">Contatos</a></li>
+          <li class="nav-item"><a class="nav-link" th:href="@{/receita/index}">Receitas</a></li>
+          <!-- 
+          <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown"
+            aria-expanded="false">Dropdown</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown03">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul></li>
+           -->
+        </ul>
+        <form>
+          <input class="form-control" type="text" placeholder="Pesquisar..." aria-label="Search" _mstplaceholder="116649" _mstaria-label="116649">
+        </form>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="px-6 pt-8 my-8">
+    <div class="col-lg-10 mx-auto content__wrap">
+      <div id="page-content" th:include="${content}">
+        Conteúdo
+      </div>
+    </div>
+  </div>
+
+  <!--JAVASCRIPT-->
+  <script th:src="@{/js/jquery/jquery-3.6.3.min.js}"></script>
+  <script th:src="@{/js/bootstrap/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{/js/nifty/nifty.min.js}"></script>
+  <th:block th:replace="${scripts}" />
+</body>
+</html>

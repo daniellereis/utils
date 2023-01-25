@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html
+  th:replace="~{base/_layout :: layout(~{::title}, ~{::section}, ~{}, ~{})}"
+  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Receitas</title>
+</head>
+
+<body>
+  <section>
+  
+ <div class="card">
+     <div class="card-body">
+  
+    <h4>Detalhes da Receita</h4>
+    <div class="row g-3" th:object="${receita}">
+    
+    <div class="card w-75 gy-5">
+      <div class="card-body">
+        <h5 class="card-title">Título</h5>
+        <p class="card-text" th:text="*{titulo}"></p>
+      </div>
+    </div>
+    
+    <div class="card w-75 gy-2">
+      <div class="card-body">
+        <h5 class="card-title">Ingredientes</h5>
+        <p class="card-text" th:text="*{ingrediente}"></p>
+      </div>
+    </div>
+
+      <div class="card w-75 gy-2">
+      <div class="card-body">
+        <h5 class="card-title">Instrução</h5>
+        <p class="card-text" th:text="*{instrucao}"></p>
+      </div>
+    </div>
+      <div class=" d-grid gap-2 d-md-block noprint">
+        <a th:href="@{/receita/index}" class="btn btn-primary mb-3">Voltar</a>
+        <button class="btn btn-primary mb-3" onclick="window.print(); return false">Imprimir</button>
+      </div>
+      
+    </div>
+</div>
+</div>
+  </section>
+</body>
+
+</html>

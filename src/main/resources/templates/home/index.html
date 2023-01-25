@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html th:replace="~{base/_layout :: layout(~{::title}, ~{::section}, ~{}, ~{})}" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Inicio</title>
+</head>
+
+<body>
+  <section>
+    
+        <h2>Bem-vindo</h2>
+
+        <div class="row">
+
+          <div class="col-md-3 mb-3">
+            <div class="card bg-secondary text-white">
+              <h5 class="card-header">Acesso de contatos</h5>
+              <div class="card-body">
+                <p>Se precisas ter controle sobre sua agenda, este é o caminho, entre a faça o cadastro de seus contatos.</p>
+                <a th:href="@{/contato/index}">Contatos</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 mb-3">
+            <div class="card bg-secondary text-white">
+              <h5 class="card-header">Acesso de Receitas</h5>
+              <div class="card-body">
+                <p>Se tens novas receitas e precisas guardar no local especial, aqui está!!!!.</p>
+                <a th:href="@{/contato/index}">Receitas</a>
+              </div>
+            </div>
+          </div>
+        </div>
+     
+  </section>
+</body>
+
+</html>

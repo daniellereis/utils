@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html th:replace="~{base/_layout :: layout(~{::title}, ~{::section}, ~{}, ~{})}" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Receitas</title>
+</head>
+
+<body>
+	<section>
+  <div class="card">
+      <div class="card-body">
+		<h4>Bem-vindo às receitas</h4>
+
+		<form class="row g-3" method="GET" th:action="@{/receita/index}">
+			<div class="col-2">
+				<input type="text" readonly class="form-control-plaintext" value="Pesquisa pelo titulo:">
+			</div>
+			<div class="col-4">
+				<input type="text" class="form-control" id="titulo" name="titulo" placeholder="" th:value="${param.titulo}">
+			</div>
+			<div class="col-1">
+				<button type="submit" class="btn btn-primary mb-3">Confirmar</button>
+			</div>
+			<div class="col-3">
+				<a th:href="@{/receita/create}" class="btn btn-primary mb-3">Nova receita</a>
+			</div>
+		</form>
+		
+		<div class="mb-3">
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Título</th>
+                        <th scope="col">Ação</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="r : ${receitas}">
+						<td th:text="${r.id}"></td>
+						<td th:text="${r.titulo}"></td>
+						<td>
+						  <a th:href="@{/receita/edit/{id}(id=${r.id})}" class="btn btn-primary btn-sm">Editar</a>
+                          <a th:href="@{/receita/delete/{id}(id=${r.id})}" class="btn btn-primary btn-sm">Excluir</a>
+                          <a th:href="@{/receita/exibir/{id}(id=${r.id})}" class="btn btn-primary btn-sm">Exibir</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+    </div>
+    </div>
+	</section>
+</body>
+
+</html>

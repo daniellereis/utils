@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html
+  th:replace="~{base/_layout :: layout(~{::title}, ~{::section}, ~{}, ~{})}"
+  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Receitas</title>
+</head>
+
+<body>
+  <section>
+  <div class="card">
+  <div class="card-body">
+    <h4>Deseja realmente excluir esta receita?</h4>
+    <div class="row g-3" th:object="${receita}">
+
+      <div class="mb-3">
+        <label for="titulo" class="form-label">Titulo:</label> <input
+          type="text" class="form-control" th:field="*{titulo}" disabled>
+      </div>
+
+      <div class="mb-3">
+        <label for="ingrediente" class="form-label">Ingredientes:</label>
+        <textarea class="form-control" id="ingrediente" rows="3" disabled></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="instrucao" class="form-label">Instrução:</label>
+        <textarea class="form-control" id="instrucao" rows="3" disabled></textarea>
+      </div>
+
+      <form class="row g-3" method="POST" th:action="@{/receita/delete}">
+        <input type="hidden" th:field="*{id}">
+        <div class="col-1">
+          <a th:href="@{/receita/index}" class="btn btn-primary mb-3">Voltar</a>
+        </div>
+        <div class="col-1">
+          <button type="submit" class="btn btn-primary btn-danger">Excluir</button>
+        </div>
+      </form>
+
+    </div>
+    </div>
+</div>
+  </section>
+</body>
+
+</html>

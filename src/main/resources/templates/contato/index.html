@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html th:replace="~{base/_layout :: layout(~{::title}, ~{::section}, ~{}, ~{})}" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Contatos</title>
+</head>
+
+<body>
+  <section>
+    <div class="card">
+      <div class="card-body">
+        <h4>Contatos</h4>
+
+        <form class="row g-3" method="GET" th:action="@{/contato/index}">
+          <div class="col-3">
+            <input type="text" readonly class="form-control-plaintext" value="Pesquisa pelo nome ou telefone:">
+          </div>
+          <div class="col-4">
+            <input type="text" class="form-control" id="pesquisa" name="pesquisa" placeholder="" th:value="${param.pesquisa}">
+          </div>
+          <div class="col-1">
+            <button type="submit" class="btn btn-primary mb-3">Confirmar</button>
+          </div>
+          <div class="col-3">
+            <a th:href="@{/contato/create}" class="btn btn-primary mb-3">Novo contato</a>
+          </div>
+        </form>
+
+        <div class="mb-3">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Endereço</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Email</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="cont : ${contatos}">
+                <td th:text="${cont.id}"></td>
+                <td th:text="${cont.nome}"></td>
+                <td th:text="${cont.endereco}"></td>
+                <td th:text="${cont.telefone}"></td>
+                <td th:text="${cont.email}"></td>
+                <td>
+                  <a th:href="@{/contato/edit/{id}(id=${cont.id})}" class="btn btn-primary btn-sm">Editar</a> <a
+                    th:href="@{/contato/delete/{id}(id=${cont.id})}" class="btn btn-primary btn-sm">Excluir</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

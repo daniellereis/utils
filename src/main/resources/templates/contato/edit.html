@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html
+	th:replace="~{base/_layout :: layout(~{::title}, ~{::section}, ~{}, ~{})}"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Contatos</title>
+</head>
+
+<body>
+	<section>
+		<h4>Editar Contato</h4>
+		<form class="row g-3" method="POST" th:action="@{/contato/edit}" th:object="${contato}">
+			<input type="hidden" th:field="*{id}">
+			<div class="mb-3">
+				<label for="nome" class="form-label">Nome:</label> <input
+					type="text" class="form-control" th:field="*{nome}">
+			</div>
+
+			<div class="mb-3">
+				<label for="endereco" class="form-label">Endereco:</label> <input
+					type="text" class="form-control" th:field="*{endereco}">
+			</div>
+
+			<div class="mb-3">
+				<label for="telefone" class="form-label">Telefone:</label> <input
+					type="text" class="form-control"  th:field="*{telefone}">
+			</div>
+
+			<div class="mb-3">
+				<label for="email" class="form-label">E-mail:</label>
+			</div>
+
+			<div class="input-group">
+				<span class="input-group-text" id="basic-addon1">@</span> <input
+					type="text" class="form-control" placeholder="E-mail"  th:field="*{email}">
+			</div>
+
+			<div class="col-1">
+				<a th:href="@{/contato/index}"  class="btn btn-primary mb-3" >Voltar</a>
+			</div>
+
+			<div class="col-1">
+				<button type="submit" class="btn btn-primary mb-3">Salvar</button>
+			</div>
+
+		</form>
+	</section>
+</body>
+
+</html>

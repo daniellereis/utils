@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html th:replace="~{base/_layout :: layout(~{::title}, ~{::section}, ~{}, ~{})}" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Receitas</title>
+</head>
+
+<body>
+  <section>
+    <div class="card">
+      <div class="card-body">
+        <div class="card-header -4 mb-3">
+          <h5 class="card-title mb-3">Nova Receita</h5>
+          <div class="row"></div>
+        </div>
+
+        <form class="row g-3" method="POST" th:action="@{/receita/create}" th:object="${receita}">
+          <div class="mb-3">
+            <label for="titulo" class="form-label">Título:</label> <input type="text" class="form-control" th:field="*{titulo}"> <span
+              th:if="${#fields.hasErrors('titulo')}" class="text-danger" th:errors="*{titulo}"></span>
+          </div>
+
+          <div class="mb-3">
+            <label for="ingrediente" class="form-label">Ingredientes:</label>
+            <textarea class="form-control" th:field="*{ingrediente}" rows="3"></textarea>
+            <span th:if="${#fields.hasErrors('ingrediente')}" class="text-danger" th:errors="*{ingrediente}"></span>
+          </div>
+
+          <div class="mb-3">
+            <label for="instrucao" class="form-label">Instrução:</label>
+            <textarea class="form-control" th:field="*{instrucao}" rows="3"></textarea>
+            <span th:if="${#fields.hasErrors('instrucao')}" class="text-danger" th:errors="*{instrucao}"></span>
+          </div>
+
+          <div class="col-1">
+            <a th:href="@{/receita/index}" class="btn btn-primary mb-3">Voltar</a>
+          </div>
+
+          <div class="col-1">
+            <button type="submit" class="btn btn-primary mb-3">Inserir</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+  </section>
+</body>
+
+
+</html>
